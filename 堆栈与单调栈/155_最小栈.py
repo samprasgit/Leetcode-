@@ -2,24 +2,25 @@
 # -*- coding: utf-8 -*-
 
 
-class Soluiton:
-    def calculate(self, s):
-        stack = []
-        num = 0
-        sign = "+"
-        for i in range(len(s)):
-            if s[i].isdigit():
-                num = num * 10 + int(s[i])
-            if s[i] in "+-*/" or i == len(s) - 1:
-                if sign == "-":
-                    num = -num
-                if sign == "+":
-                    pass
-                if sign == "*":
-                    num = num * stack.pop()
-                if sign == "/":
-                    num = int(num / stack.pop())
-                stack.append(num)
-                sign = s[i]
-                num = 0
-        return sum(stack)
+# 解题思路
+# 使用辅助栈 类似一个元组 楚储存 当前元素值和栈内最小值
+
+
+class MiniStack:
+    def __init__(self):
+        self.stack = []
+
+    def push(self):
+        if not self.stack:
+            self.stack.append((x, x))
+        else:
+            self.stack.append((x, min(x, self.stack[-1][-1])))
+
+    def pop(self):
+        self.stack.pop()
+
+    def top(self):
+        return self.stack[-1][-1]
+
+    def get_mix(self):
+        return self.stack[-1][0]
