@@ -20,7 +20,7 @@ class MiniStack:
         self.stack.pop()
 
     def top(self):
-        return self.stack[-1][-1]
+        return self.stack[-1][0]
 
     def get_mix(self):
-        return self.stack[-1][0]
+        return self.stack[-1][1]
