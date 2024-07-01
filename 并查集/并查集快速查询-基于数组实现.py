@@ -28,3 +28,5 @@ class UnionFind:
     # 查询操作:判断x和y是否属于同一个集合
     def is_connected(self, x, y):
         return self.find(x) == self.find(y)
+
+## 这种方式实现简单，但效率不高，每次合并操作都需要遍历整个数组
